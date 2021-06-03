@@ -11,7 +11,7 @@ This demo showcases 4 types of modules:
  * Modules which represent webpages or tabs in a UI ([page_data_investigator_module.R](https://github.com/med-material/rshiny_application_demo/blob/main/modules/page_data_investigator_module.R))
  * Modules which plot data from another module ([plot_timeline_module.R](https://github.com/med-material/rshiny_application_demo/blob/main/modules/plot_timeline_module.R))
  * Modules within modules example ([page_data_investigator_module.R](https://github.com/med-material/rshiny_application_demo/blob/main/modules/page_data_investigator_module.R) + [plot_timeline_module.R](https://github.com/med-material/rshiny_application_demo/blob/main/modules/plot_timeline_module.R))
- * Modules modifying data: (TODO)
+  * Modules modifying data: ([data_add_synthetic_module.R](https://github.com/med-material/rshiny_application_demo/blob/main/modules/data_add_synthetic_module.R)
  * Auto-Generated modules: (TODO)
 
 ## Why?
