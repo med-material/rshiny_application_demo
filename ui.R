@@ -15,7 +15,8 @@ shinyUI(
   # Fx column(1,...) creates a column that takes 1/12th of the webpage.
   tags$header(fluidRow(
     column(1,div(class="text-center",img(src='whack_icon.svg', id="whack-logo"))),
-    column(11,data_import_UI("import_game_csv"))
+    column(2,data_add_synthetic_UI("addSyntheticData")),
+    column(8,data_import_UI("import_game_csv")),
     )),
   
   # 2) Define a navigation panel.
