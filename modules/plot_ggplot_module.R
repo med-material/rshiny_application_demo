@@ -3,14 +3,9 @@
 # It works similar to ui.R, except when creating outputs
 # you have to remember to encapsulate them with ns()
 # ns() concatenates the module ID to your outputs.
-
 plot_ggplot_UI <- function(id) {
   ns = NS(id)
-  list(
-    fluidRow(
-      plotOutput(ns("speedPlot")),
-    )
-  )
+  plotOutput(ns("speedPlot"))
 }
 
 # plot_ggplot
@@ -18,7 +13,6 @@ plot_ggplot_UI <- function(id) {
 # Beyond storing the namespace, all computations must happen inside the
 # plotlyOutput reactive context.
 plot_ggplot <- function(input, output, session, df) {
-  ns <- session$ns
   
   output$speedPlot <- renderPlot({
     #validate() ensures that our code is only executed if the dataframe
@@ -26,7 +20,6 @@ plot_ggplot <- function(input, output, session, df) {
     # any csv file yet. The "vis" errorClass is used to show where the plot will
     # be plotted (optional).
     validate(need(df(), "Waiting for data."), errorClass = "vis")
-
     # To read the reactive dataframe 'df', we need to "evaluate" it.
     # We do this by calling it as a function df(). 
     df_vis <- df()

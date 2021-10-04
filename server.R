@@ -14,10 +14,10 @@ shinyServer(function(input, output, session) {
   # which we initialize to NULL.
   #
   # To make calculations with 'df', we need to call it within a "reactive context"
-  # ObserveEvent({ }), observe({ }), renderTable({ }), renderPlot({ }) etc.
+  # ObserveEvent({ }), renderTable({ }), renderPlot({ }) etc.
   # The server function itself is not "reactive", so avoid making calculations
   # inside it.
-  r <- reactiveValues(df = NULL, source = NULL)
+  r <- reactiveValues(df = NULL)
   
   # 2) CALL YOUR MODULES
   # We need to initialize the main modules of our R shiny application.
@@ -32,9 +32,7 @@ shinyServer(function(input, output, session) {
   # 
   # If you need to send data from your module to the app, use a return value.
   csv_data <- callModule(data_import, "import_game_csv")
-  syn_data <- callModule(data_add_synthetic, "addSyntheticData", reactive(r$df))
-  callModule(page_data_investigator, "data_investigator", reactive(r$df))
-  callModule(page_linked_plots, "linked_plots_example", reactive(r$df))
+  callModule(plot_ggplot, "speed_position", reactive(r$df))
   
   # 3) OBSERVE INCOMING DATA
   # To delegate the data to the rest of the application, server.R needs to 
@@ -44,15 +42,7 @@ shinyServer(function(input, output, session) {
   observeEvent(csv_data$trigger, {
     req(csv_data$trigger > 0)
     r$df <- csv_data$df
-    r$source <- csv_data$filename
   })
-  
-  # This is another example of observation
-  # in this case, we observe our module "data_add_synthetic"
-  # which reads the dataframe and adds extra data to it.
-  observeEvent(syn_data$trigger, {
-    req(syn_data$trigger > 0)
-    r$df <- syn_data$df
-  })
+
   
 })
