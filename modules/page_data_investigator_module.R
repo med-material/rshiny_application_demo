@@ -9,7 +9,10 @@ page_data_investigator_UI <- function(id) {
               tags$h3("Data Investigator"),
               tags$p("Upload your data and inspect data in the plot below."),
               
-              # Here we let a submodule do the graph plot for us.
+              # Here we let a submodule do the graph plot for us. (ggplot)
+              plot_ggplot_UI(ns("speed_position")),
+              
+              # This submodule provides another graph (Plotly).
               plot_timeline_UI(ns("speed_timeline"))
             ),
             fluidRow(
@@ -29,6 +32,9 @@ page_data_investigator <- function(input, output, session, df, meta) {
   # Important: never add ns() around the ID when using callModule().
   # Only add ns() inside the module UI function.
   callModule(plot_timeline, "speed_timeline", df)
+  
+  # Another calling Plot Submodule Example
+  callModule(plot_ggplot, "speed_position", df)
   
   # renderUI:
   # Our page module can add dynamic text content and various

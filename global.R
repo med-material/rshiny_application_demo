@@ -26,6 +26,9 @@ options(shiny.maxRequestSize=50*1024^2)
 # Whenever you create a new module, add it to the list below.
 # Importing your module makes them callable in your R Shiny application.
 source("modules/plot_timeline_module.R", local = T)
+source("modules/plot_ggplot_module.R", local = T)
+source("modules/plot_linked_module.R", local = T)
 source("modules/page_data_investigator_module.R", local = T)
+source("modules/page_linked_plots_module.R", local = T)
 source("modules/data_import_module.R", local = T)
 source("modules/data_add_synthetic_module.R", local=T)

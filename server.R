@@ -34,6 +34,7 @@ shinyServer(function(input, output, session) {
   csv_data <- callModule(data_import, "import_game_csv")
   syn_data <- callModule(data_add_synthetic, "addSyntheticData", reactive(r$df))
   callModule(page_data_investigator, "data_investigator", reactive(r$df))
+  callModule(page_linked_plots, "linked_plots_example", reactive(r$df))
   
   # 3) OBSERVE INCOMING DATA
   # To delegate the data to the rest of the application, server.R needs to 

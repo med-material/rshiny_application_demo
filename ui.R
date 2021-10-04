@@ -25,7 +25,7 @@ shinyUI(
   # This way, we minimize UI code to ui.R. itself.
   navlistPanel(id = "pageChooser", well= FALSE, widths=c(2,10),
     tabPanel("Data Investigator", page_data_investigator_UI("data_investigator")),
-    tabPanel("Secondary Page", HTML("<p>Under construction.</p>"))
+    tabPanel("Linked Plots", page_linked_plots_UI("linked_plots_example"))
     ),
   
   # 3) Insert a footer at the bottom (Optional)
