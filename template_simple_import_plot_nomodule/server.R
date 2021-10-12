@@ -18,7 +18,7 @@ shinyServer(function(input, output, session) {
     
     # Now we can create a plot of the data.
     plot <- df_vis %>% ggplot(aes(x=MoleIndexX, y = MoleActivatedDuration)) + geom_point()
-    browser()
+    
     return(plot)
   })
 
